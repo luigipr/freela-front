@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
- //   const { user } = useContext(Usercontext)
+   const { user } = useContext(Usercontext)
     return (
         <NavBarStyle>
             <Link to='/' style={{ textDecoration: 'none' }}><h1>Magaivers</h1></Link>
-            <img src={user.image} alt="avatar" data-test="avatar" />
+            <p></p>
+            <p> {user.name}"</p>
         </NavBarStyle>
     )
 }

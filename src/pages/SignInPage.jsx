@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { Link , useNavigate} from "react-router-dom"
-import MyWalletLogo from "../components/MyWalletLogo"
 import useAuth from "../hooks/useAuth";
 import {signIn} from "../services/api";
 import { useState, useEffect, useContext } from "react";
+import React from 'react';
+import MagaiversLogo from "../components/MagaiversLogo";
 
 export default function SignInPage() {
     const [email, setEmail] = useState("");

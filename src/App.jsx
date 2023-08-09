@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import styled from "styled-components"
+import React from 'react'
+
 //import HomePage from "./pages/HomePage"
-//import SignInPage from "./pages/SignInPage"
+import SignInPage from "./pages/SignInPage"
 //import SignUpPage from "./pages/SignUpPage"
 
 export default function App() {
@@ -10,8 +12,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignInPage />} />
-          <Route path="/cadastro" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage/>} />
+          {/* <Route path="/cadastro" element={<SignUpPage />} />
+          <Route path="/home" element={<HomePage/>} /> */}
           
         </Routes>
       </BrowserRouter>
