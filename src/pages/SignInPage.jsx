@@ -23,13 +23,19 @@ export default function SignInPage() {
         e.preventDefault();
     
         const user = {email, password};
-    
+        
         const promise = signIn(user);
     
         promise.then( response => {
-        localUser(response.data.user)
+
+        //getToken(response.data.token)     
+          console.log(response.data.user.rows[0])
+          console.log(response.data.token)
+        localUser(response.data.user.rows[0])
         login(response.data.token);
         // navegar para pagina de entrada
+        //home
+
         navigate('/home');
         });
         promise.catch( err  => alert(err.response.data.message));

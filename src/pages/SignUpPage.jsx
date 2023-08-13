@@ -1,24 +1,26 @@
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import MyWalletLogo from "../components/MyWalletLogo"
 import {signUp} from "../services/api";
 import { useState } from "react";
-
+import MagaiversLogo from "../components/MagaiversLogo";
+import React from 'react';
 
 export default function SignUpPage() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [picture, setPicture] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const {states} = useState()
+
   const navigate = useNavigate();
 
   function registerUser(e) {
     e.preventDefault();
     
-    const promise = signUp({username, email, password, password2});
-
+    const promise = signUp({name, lastName, email, password, confirmPassword});
+    
     promise.then( resposta => {
 
       alert('Você foi cadastrado com sucesso!');  
@@ -32,11 +34,14 @@ export default function SignUpPage() {
   return (
     <SingUpContainer>
       <form onSubmit={registerUser}>
-        <MyWalletLogo />
-        <input placeholder="Nome" data-test="name" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <input placeholder="E-mail" data-test="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input placeholder="Senha" data-test="password" type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <input placeholder="Confirme a senha" data-test="conf-password" type="password" autoComplete="new-password" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
+        <Size>
+          <MagaiversLogo />
+        </Size>
+        <input placeholder="Nome"  type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+        <input placeholder="Último sobrenome" type="text" value={lastName} onChange={ (e) => setLastName(e.target.value)}/>
+        <input placeholder="E-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input placeholder="Senha"  type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input placeholder="Confirme a senha" type="password" autoComplete="new-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
         
         
         <button data-test="sign-up-submit" >Cadastrar</button>
@@ -48,6 +53,12 @@ export default function SignUpPage() {
     </SingUpContainer>
   )
 }
+
+const Size = styled.div`
+  height: 300px;
+  overflow: hidden;
+`
+
 
 const SingUpContainer = styled.section`
   height: 100vh;
