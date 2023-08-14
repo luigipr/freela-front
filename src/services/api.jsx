@@ -49,7 +49,7 @@ export function getServiceById(id, token) {
 
 }
 
-export default function getServicesByUserId (userId,token){
+export function getServicesByUserId (userId,token){
 
   const config = createConfig(token)
 
@@ -62,4 +62,13 @@ export function getUserById(id, token) {
 
   const promise = axios.get(``)
 
+}
+
+export function deactivateService(id, token) {
+
+  const config = createConfig(token)
+
+  const promise = axios.put(`${BASE_URL}/${id}`, config)
+
+  return promise;
 }

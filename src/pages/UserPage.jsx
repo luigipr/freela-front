@@ -5,37 +5,39 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState,  } from "react";
 import React from 'react';
 import axios from "axios";
-import { getServices } from "../services/api";
-import ServiceCard from "../components/ServiceCard";
+import {getServicesByUserId } from "../services/api";
+import ServiceUserCard from "../components/ServiceUserCard";
 
 
 export default function UserPage() {
     const { auth, login, user, localUser } = useAuth();
     const [userServices, setUserServices] = useState([[]])
     //const {token} = useContext(AuthContext);
+    console.log(user)
+    const id = user.id
+    console.log(user.id)
     const navigate = useNavigate();
     console.log(auth)
     console.log(user)
+
     if(!auth) return navigate('/');
     useEffect(() => {
 
-        const promise = getServices(auth)
+        const promise = getServicesByUserId(id, auth)
         promise.then( (answer) => setUserServices(answer.data))
         promise.catch(error => console.log(error.response.data))
 
     }, []);
 
-
+    console.log(userServices)
 
     return (
-
-
         <Container>
         <NavBar />
         <Header>           
         </Header>
         <Services>
-        {userServices.map(service => (<ServiceCard key={service.id} service={service} />))}
+        {userServices.map(service => (<ServiceUserCard key={service.id} service={service} />))}
         {userServices.length < 1 &&
             <NoServices>
                 <p>
