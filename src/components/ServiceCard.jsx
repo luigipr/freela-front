@@ -4,14 +4,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export default function ServiceCard({service}) {
-
+    const { auth, login, user, localUser } = useAuth();
     const {id, name, description, image, price, uf, city} = service
     const navigate = useNavigate();
 
     function details(id) {
-        navigate('/detalhes/{id}');
+        navigate(`/detalhes/${id}`);
 
     }
 
@@ -27,7 +28,7 @@ return (
 )}
 
 const ListServiceContainer = styled.div`
-    width: 45%;
+    width: 49%;
     display: flex;
     flex-direction:column;
     background: #fff;

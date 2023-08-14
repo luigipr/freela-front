@@ -41,8 +41,25 @@ export function getServices(token) {
 export function getServiceById(id, token) {
   const config = createConfig(token)
 
-  const promise = axios.get(`${BASE_URL}/details/${id}`, config)
+  const promise = axios.get(`${BASE_URL}/detalhes/${id}`, config)
+
+  console.log(promise)
 
   return promise;
+
+}
+
+export default function getServicesByUserId (userId,token){
+
+  const config = createConfig(token)
+
+  const promise = axios.get(`${BASE_URL}/perfil/${userId}`, config)
+
+  return promise;
+}
+
+export function getUserById(id, token) {
+
+  const promise = axios.get(``)
 
 }

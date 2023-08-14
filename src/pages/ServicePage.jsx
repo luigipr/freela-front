@@ -65,7 +65,7 @@ export default function ServicePage() {
     promise.then( resposta => {
 
       // navegar para pagina home
-      navigate('/HomePage');
+      navigate('/home');
     });
     promise.catch( err  => {alert(err.response)});
 

@@ -10,7 +10,7 @@ export default function NavBar() {
     return (
         <NavBarStyle>
             <Link to='/home'><img src="/magaiversmini.png" /></Link>
-            <User to='/perfil/{{user.id}}'> <span><h1>Olá {user.name}</h1> </span></User>
+            <User to={`/perfil/${user.id}`}> <span><h1>Olá {user.name}</h1> </span></User>
         </NavBarStyle>
     )
 }
@@ -35,7 +35,7 @@ const NavBarStyle = styled.div`
 
         h1 {
             font-family: 'Helvetica';
-            width: 20%;
+            width: 35%;
             font-size: 30px;
             color: #FFFFFF;
         }

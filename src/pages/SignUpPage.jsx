@@ -10,6 +10,7 @@ export default function SignUpPage() {
   const [lastName, setLastName] = useState("");
   const [picture, setPicture] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -19,7 +20,7 @@ export default function SignUpPage() {
   function registerUser(e) {
     e.preventDefault();
     
-    const promise = signUp({name, lastName, email, password, confirmPassword});
+    const promise = signUp({name, lastName, email,phone, password, confirmPassword});
     
     promise.then( resposta => {
 
@@ -40,6 +41,7 @@ export default function SignUpPage() {
         <input placeholder="Nome"  type="text" value={name} onChange={(e) => setName(e.target.value)}/>
         <input placeholder="Último sobrenome" type="text" value={lastName} onChange={ (e) => setLastName(e.target.value)}/>
         <input placeholder="E-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input placeholder="Telefone" type="text" value={phone} onChange={(e) => setPhone(e.target.value)}/>
         <input placeholder="Senha"  type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <input placeholder="Confirme a senha" type="password" autoComplete="new-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
         
